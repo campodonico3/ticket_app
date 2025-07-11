@@ -9,7 +9,8 @@ import 'package:ticket_app/base/widgets/text_style_third.dart';
 
 class TicketView extends StatelessWidget {
   final Map<String, dynamic> ticket;
-  const TicketView({super.key, required this.ticket});
+  final bool wholeScreen;
+  const TicketView({super.key, required this.ticket, this.wholeScreen = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class TicketView extends StatelessWidget {
       width: size.width * 0.85,
       height: 189,
       child: Container(
-        margin: EdgeInsets.only(right: 16),
+        margin: EdgeInsets.only(right: wholeScreen ? 0 : 16),
         child: Column(
           children: [
             // Blue part of the ticket
@@ -68,14 +69,17 @@ class TicketView extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: 100,
-                        child: TextStyleFourth(text: ticket["from"]["name"],),
+                        child: TextStyleFourth(text: ticket["from"]["name"]),
                       ),
                       Expanded(child: Container()),
-                      TextStyleFourth(text: ticket["flying_time"],),                      
+                      TextStyleFourth(text: ticket["flying_time"]),
                       Expanded(child: Container()),
                       SizedBox(
                         width: 100,
-                        child: TextStyleFourth(text: ticket["to"]["name"], align: TextAlign.end,),                         
+                        child: TextStyleFourth(
+                          text: ticket["to"]["name"],
+                          align: TextAlign.end,
+                        ),
                       ),
                     ],
                   ),
@@ -111,9 +115,20 @@ class TicketView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      AppColumnTextLayout(topText: ticket["date"], bottomText: "DATE",),
-                      AppColumnTextLayout(topText: ticket["departure_time"], bottomText: "Departure Time", crossAxis: CrossAxisAlignment.center,),
-                      AppColumnTextLayout(topText: ticket["number"].toString(), bottomText: "Number", crossAxis: CrossAxisAlignment.end,),
+                      AppColumnTextLayout(
+                        topText: ticket["date"],
+                        bottomText: "DATE",
+                      ),
+                      AppColumnTextLayout(
+                        topText: ticket["departure_time"],
+                        bottomText: "Departure Time",
+                        crossAxis: CrossAxisAlignment.center,
+                      ),
+                      AppColumnTextLayout(
+                        topText: ticket["number"].toString(),
+                        bottomText: "Number",
+                        crossAxis: CrossAxisAlignment.end,
+                      ),
                     ],
                   ),
                 ],

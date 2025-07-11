@@ -6,9 +6,11 @@ class AppDoubleText extends StatelessWidget {
     super.key,
     required this.bigText,
     required this.smallText,
+    required this.fun,
   });
   final String bigText;
   final String smallText;
+  final VoidCallback fun;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,11 @@ class AppDoubleText extends StatelessWidget {
       children: [
         Text(bigText, style: AppStyles.headLineStyle2),
         InkWell(
-          onTap: () {
-            print("tapped");
-          },
-          child: Text(smallText, style: AppStyles.textStyle.copyWith(color: AppStyles.primaryColor)),
+          onTap: fun,
+          child: Text(
+            smallText,
+            style: AppStyles.textStyle.copyWith(color: AppStyles.primaryColor),
+          ),
         ),
       ],
     );
