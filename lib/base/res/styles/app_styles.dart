@@ -9,6 +9,9 @@ class AppStyles {
   static Color ticketBlue = Color(0xFF526799);
   static Color ticketorange = Color(0xFFF37B67);
   static Color kakiColor = Color(0xFFd2bdb6);
+  static Color planeColor = Color(0xFFBFC2DF);
+  static Color findTicketColor = Color(0xD91130CE);
+  static Color circleColor = Color(0xFF189999);
 
   static TextStyle textStyle = TextStyle(
     fontSize: 16,
